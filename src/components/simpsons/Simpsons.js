@@ -4,7 +4,7 @@ import Simpson from "./Simpson";
 
 function Simpsons(props) {
     return(
-        <div>{
+        <div> {
             simpsons.map((simpson, index: number) => <Simpson key = {index} simpson = {simpson}/>)
         }
         </div>
