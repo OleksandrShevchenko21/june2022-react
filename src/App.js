@@ -6,38 +6,29 @@ import {
     Routes,
     Route,
     Link,
-    Outlet
+
 } from "react-router-dom";
-import {Albums} from "./components/albums/Albums";
-import {Comments} from "./components/comments/Comments";
+import {Posts} from "./components/posts/Posts";
+import {MainLayout} from "./layout/MainLayout";
+import {TodosPAge} from "./pages/TodosPage";
+import {AlbumsPage} from "./pages/AlbumPage";
+import {CommentsPage} from "./pages/CommentsPage";
 
 
 function App() {
-  return (
-      <div>
 
-        <div>
-          <Users/>
-        </div>
+    return (<div>
 
-        <div>
-            <ul>
-                <li><Link to={'/todos'}>all todos</Link></li>
-                <li><Link to={'/albums'}>all albums</Link></li>
-                <li><Link to={'/comments'}>all comments</Link></li>
-            </ul>
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route path={'albums'} element={<AlbumsPage/>}/>
+                <Route path={'comments'} element={<CommentsPage/>}>
+                    <Route path={':postId'} element={<Posts/>}/>
+                </Route>
+                <Route path={'todos'} element={<TodosPAge/>}/>
+            </Route>
+        </Routes>
 
-            <Routes>
-                <Route path={'todos'} element={<Todos/>}/>
-                <Route path={'albums'} element={<Albums/>}/>
-                <Route path={'comments'} element={<Comments/>}/>
-
-            </Routes>
-
-        </div>
-
-      </div>
-  );
+    </div>);
 }
-
 export default App;
